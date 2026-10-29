@@ -17,12 +17,17 @@
   --color-brand-900: #195f59;
   --color-brand-950: #09403d;
 
-  /* Turquoise-tinted dark grays: every bg-gray-* / border-gray-* surface now follows the turquoise theme */
-  --color-gray-950: #04312e;
-  --color-gray-900: #07403c;
-  --color-gray-800: #0c524d;
-  --color-gray-700: #166861;
-  --color-gray-600: #3a9a91;
+  /* LIGHT THEME: the gray scale is inverted so existing gray-* classes become
+     white / aqua surfaces (700-950) and dark-teal text (50-300). */
+  --color-gray-50: #052220;
+  --color-gray-100: #082f2d;
+  --color-gray-200: #0b3d3a;
+  --color-gray-300: #12514d;
+  --color-gray-600: #5aa9a3;
+  --color-gray-700: #a9e4de;
+  --color-gray-800: #dcf6f3;
+  --color-gray-900: #ffffff;
+  --color-gray-950: #f3fffe;
 
   --font-inter: var(--font-inter), sans-serif;
   --font-nacelle: var(--font-nacelle), sans-serif;
@@ -63,7 +68,7 @@
 /* Tailwind v4 defaults borders to currentColor; keep the v3 look */
 @layer base {
   *, ::after, ::before, ::backdrop, ::file-selector-button {
-    border-color: var(--color-gray-200, currentColor);
+    border-color: var(--color-gray-700, currentColor);
   }
 }
 
@@ -75,7 +80,7 @@
   .btn-sm { @apply px-3 py-[7px]; }
 
   .form-input {
-    @apply w-full rounded-lg border border-gray-700 bg-gray-900/50 px-4 py-2.5 text-sm text-gray-200 placeholder-gray-600 focus:border-gray-600 focus:ring-0 focus:ring-offset-0;
+    @apply w-full rounded-lg border border-gray-700 bg-white/70 px-4 py-2.5 text-sm text-gray-200 placeholder-gray-600 focus:border-brand-500 focus:ring-0 focus:ring-offset-0;
   }
 }
 
