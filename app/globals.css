@@ -65,3 +65,32 @@
     transform: translate3d(0, 10px, 0);
   }
 }
+
+/*
+  Gradient 1px border: draw a gradient, then mask out everything but the border ring.
+  Written as plain CSS because Tailwind's arbitrary-value version of this loses the
+  mask-composite rule, which leaves a solid layer on top of the text.
+*/
+.gradient-border {
+  position: relative;
+  --gb: linear-gradient(to right, var(--color-gray-800), var(--color-gray-700), var(--color-gray-800));
+}
+.gradient-border-pill {
+  --gb: linear-gradient(to bottom, color-mix(in oklab, var(--color-gray-700) 15%, transparent), color-mix(in oklab, var(--color-gray-700) 50%, transparent));
+}
+.gradient-border-indigo {
+  --gb: linear-gradient(to bottom, color-mix(in oklab, var(--color-indigo-500) 0%, transparent), color-mix(in oklab, var(--color-indigo-500) 50%, transparent));
+}
+.gradient-border::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  border: 1px solid transparent;
+  background: var(--gb) border-box;
+  -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+}
