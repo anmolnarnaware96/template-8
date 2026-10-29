@@ -9,19 +9,19 @@ import AOS from "aos";
 /* ------------------------------------------------------------------ */
 
 const GRADIENT_TEXT =
-  "animate-[gradient_6s_linear_infinite] bg-[linear-gradient(to_right,var(--color-gray-200),var(--color-indigo-200),var(--color-gray-50),var(--color-indigo-300),var(--color-gray-200))] bg-[length:200%_auto] bg-clip-text font-nacelle font-semibold text-transparent";
+  "animate-[gradient_6s_linear_infinite] bg-[linear-gradient(to_right,var(--color-gray-200),var(--color-brand-200),var(--color-gray-50),var(--color-brand-300),var(--color-gray-200))] bg-[length:200%_auto] bg-clip-text font-nacelle font-semibold text-transparent";
 
 const GRADIENT_BORDER = "gradient-border";
 
 const BTN_PRIMARY =
-  "bg-linear-to-t from-indigo-600 to-indigo-500 bg-[length:100%_100%] bg-[bottom] text-white shadow-[inset_0px_1px_0px_0px_--theme(--color-white/.16)] hover:bg-[length:100%_150%]";
+  "bg-linear-to-t from-brand-600 to-brand-500 bg-[length:100%_100%] bg-[bottom] text-gray-950 shadow-[inset_0px_1px_0px_0px_--theme(--color-white/.16)] hover:bg-[length:100%_150%]";
 
 const BTN_SECONDARY = `relative bg-linear-to-b from-gray-800 to-gray-800/60 bg-[length:100%_100%] bg-[bottom] text-gray-300 hover:bg-[length:100%_150%] ${GRADIENT_BORDER}`;
 
 const SECTION_BORDER =
   "border-t [border-image:linear-gradient(to_right,transparent,--theme(--color-slate-400/.25),transparent)1]";
 
-const MUTED = "text-indigo-200/65";
+const MUTED = "text-brand-200/65";
 
 /* ------------------------------------------------------------------ */
 /* Content                                                             */
@@ -119,10 +119,9 @@ const testimonials = [
 ];
 
 const footerColumns = [
-  { title: "Product", links: ["Features", "Integrations", "Pricing & Plans", "Changelog", "Our method", "User policy"] },
-  { title: "Company", links: ["About us", "Diversity & Inclusion", "Blog", "Careers", "Financial statements"] },
-  { title: "Resources", links: ["Community", "Terms of service", "Report a vulnerability"] },
-  { title: "Content Library", links: ["Templates", "Tutorials", "Knowledge base", "Learn", "Cookie manager"] },
+  { title: "Product", links: ["Features", "Pricing & Plans", "Changelog"] },
+  { title: "Company", links: ["About us", "Blog", "Careers"] },
+  { title: "Resources", links: ["Community", "Terms of service"] },
 ];
 
 const socials = [
@@ -198,8 +197,8 @@ function Decor({ src, w, h, className }: { src: string; w: number; h: number; cl
 
 function Eyebrow({ children }: { children: React.ReactNode }) {
   return (
-    <div className="inline-flex items-center gap-3 pb-3 before:h-px before:w-8 before:bg-linear-to-r before:from-transparent before:to-indigo-200/50 after:h-px after:w-8 after:bg-linear-to-l after:from-transparent after:to-indigo-200/50">
-      <span className="inline-flex bg-linear-to-r from-indigo-500 to-indigo-200 bg-clip-text text-transparent">
+    <div className="inline-flex items-center gap-3 pb-3 before:h-px before:w-8 before:bg-linear-to-r before:from-transparent before:to-brand-200/50 after:h-px after:w-8 after:bg-linear-to-l after:from-transparent after:to-brand-200/50">
+      <span className="inline-flex bg-linear-to-r from-brand-500 to-brand-200 bg-clip-text text-transparent">
         {children}
       </span>
     </div>
@@ -213,7 +212,7 @@ function CtaButtons() {
         <a className={`btn group mb-4 w-full sm:mb-0 sm:w-auto ${BTN_PRIMARY}`} href="#0">
           <span className="relative inline-flex items-center">
             Start Building
-            <span className="ml-1 tracking-normal text-white/50 transition-transform group-hover:translate-x-0.5">
+            <span className="ml-1 tracking-normal text-gray-950/60 transition-transform group-hover:translate-x-0.5">
               -&gt;
             </span>
           </span>
@@ -288,12 +287,12 @@ function Header({ go }: { go: (v: View) => void }) {
 }
 
 function Footer({ go }: { go: (v: View) => void }) {
-  const link = `${MUTED} transition hover:text-indigo-500`;
+  const link = `${MUTED} transition hover:text-brand-500`;
   return (
     <footer>
       <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
         <Decor src="/footer-illustration.svg" w={1076} h={378} className="bottom-0 left-1/2 -translate-x-1/2" />
-        <div className="grid grid-cols-2 justify-between gap-12 py-8 sm:grid-rows-[auto_auto] md:grid-cols-4 md:grid-rows-[auto_auto] md:py-12 lg:grid-cols-[repeat(4,minmax(0,140px))_1fr] lg:grid-rows-1 xl:gap-20">
+        <div className="grid grid-cols-2 justify-between gap-12 py-8 md:grid-cols-3 md:py-12 lg:grid-cols-[repeat(3,minmax(0,140px))_1fr] xl:gap-20">
           {footerColumns.map((col) => (
             <div key={col.title} className="space-y-2">
               <h3 className="text-sm font-medium text-gray-200">{col.title}</h3>
@@ -306,7 +305,7 @@ function Footer({ go }: { go: (v: View) => void }) {
               </ul>
             </div>
           ))}
-          <div className="col-span-2 md:col-span-4 lg:col-span-1 lg:text-right">
+          <div className="col-span-2 md:col-span-3 lg:col-span-1 lg:text-right">
             <div className="mb-3">
               <Logo onClick={() => go("home")} />
             </div>
@@ -320,7 +319,7 @@ function Footer({ go }: { go: (v: View) => void }) {
                 {socials.map((s) => (
                   <li key={s.label}>
                     <a
-                      className="flex items-center justify-center text-indigo-500 transition hover:text-indigo-400"
+                      className="flex items-center justify-center text-brand-500 transition hover:text-brand-400"
                       href="#0"
                       aria-label={s.label}
                     >
@@ -345,7 +344,36 @@ function Footer({ go }: { go: (v: View) => void }) {
 
 function Hero() {
   const dialogRef = useRef<HTMLDialogElement>(null);
-  const videoRef = useRef<HTMLVideoElement>(null);
+  const modalVideoRef = useRef<HTMLVideoElement>(null);
+  const inlineVideoRef = useRef<HTMLVideoElement>(null);
+
+  // Autoplay the hero video (muted, so browsers allow it); pause it while off-screen to save CPU.
+  useEffect(() => {
+    const v = inlineVideoRef.current;
+    if (!v) return;
+    v.muted = true;
+    const io = new IntersectionObserver(
+      ([entry]) => (entry.isIntersecting ? v.play().catch(() => {}) : v.pause()),
+      { threshold: 0.25 },
+    );
+    io.observe(v);
+    return () => io.disconnect();
+  }, []);
+
+  const openModal = () => {
+    inlineVideoRef.current?.pause();
+    dialogRef.current?.showModal();
+    const m = modalVideoRef.current;
+    if (m) {
+      m.currentTime = 0;
+      m.play().catch(() => {});
+    }
+  };
+
+  const onModalClose = () => {
+    modalVideoRef.current?.pause();
+    inlineVideoRef.current?.play().catch(() => {});
+  };
 
   return (
     <section>
@@ -364,7 +392,7 @@ function Hero() {
             </div>
           </div>
 
-          {/* Video thumbnail + modal */}
+          {/* Autoplaying video; click to open a larger player */}
           <div className="relative">
             <Decor
               src="/secondary-illustration.svg"
@@ -373,16 +401,28 @@ function Hero() {
               className="bottom-8 left-1/2 -ml-28 -translate-x-1/2 translate-y-1/2"
             />
             <button
-              className="group relative flex items-center justify-center rounded-2xl focus:outline-hidden focus-visible:ring-3 focus-visible:ring-indigo-200"
-              onClick={() => dialogRef.current?.showModal()}
-              aria-label="Watch the video"
+              className="group relative flex w-full items-center justify-center rounded-2xl focus:outline-hidden focus-visible:ring-3 focus-visible:ring-brand-200"
+              onClick={openModal}
+              aria-label="Open the video in a larger player"
               data-aos="fade-up"
               data-aos-delay={200}
             >
-              <figure className="relative overflow-hidden rounded-2xl before:absolute before:inset-0 before:-z-10 before:bg-linear-to-br before:from-gray-900 before:via-indigo-500/20 before:to-gray-900">
-                <Image className="opacity-50 grayscale" src="/hero-image-01.jpg" width={1104} height={576} priority alt="Video thumbnail" />
+              <figure className="relative aspect-[23/12] w-full overflow-hidden rounded-2xl bg-gray-900">
+                <video
+                  ref={inlineVideoRef}
+                  className="h-full w-full object-cover"
+                  src="/video.mp4"
+                  poster="/hero-image-01.jpg"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="auto"
+                />
+                {/* turquoise tint so the footage matches the page */}
+                <div className="pointer-events-none absolute inset-0 bg-linear-to-br from-gray-950/50 via-brand-500/15 to-gray-950/50" />
               </figure>
-              <span className="pointer-events-none absolute p-2.5 before:absolute before:inset-0 before:rounded-full before:bg-gray-950 before:duration-300 group-hover:before:scale-110">
+              <span className="pointer-events-none absolute bottom-5 right-5 p-2.5 before:absolute before:inset-0 before:rounded-full before:bg-gray-950/80 before:backdrop-blur-xs before:duration-300 group-hover:before:scale-105">
                 <span className="relative flex items-center gap-3">
                   <svg xmlns="http://www.w3.org/2000/svg" width={20} height={20} fill="none">
                     <path
@@ -393,14 +433,12 @@ function Hero() {
                     />
                     <defs>
                       <linearGradient id="play" x1={10} x2={10} y1={0} y2={20} gradientUnits="userSpaceOnUse">
-                        <stop stopColor="#6366F1" />
-                        <stop offset={1} stopColor="#6366F1" stopOpacity=".72" />
+                        <stop stopColor="#40E0D0" />
+                        <stop offset={1} stopColor="#40E0D0" stopOpacity=".72" />
                       </linearGradient>
                     </defs>
                   </svg>
-                  <span className="text-sm font-medium leading-tight text-gray-300">
-                    Watch Demo<span className="text-gray-600"> - </span>3:47
-                  </span>
+                  <span className="text-sm font-medium leading-tight text-gray-300">Watch full screen</span>
                 </span>
               </span>
             </button>
@@ -408,10 +446,10 @@ function Hero() {
             <dialog
               ref={dialogRef}
               onClick={(e) => e.target === e.currentTarget && dialogRef.current?.close()}
-              onClose={() => videoRef.current?.pause()}
+              onClose={onModalClose}
               className="m-auto w-full max-w-6xl overflow-hidden rounded-2xl bg-black p-0 shadow-2xl backdrop:bg-black/70"
             >
-              <video ref={videoRef} className="aspect-video w-full" loop controls>
+              <video ref={modalVideoRef} className="aspect-video w-full" loop controls playsInline preload="none">
                 <source src="/video.mp4" type="video/mp4" />
               </video>
             </dialog>
@@ -440,7 +478,7 @@ function Workflows() {
               <a
                 key={w.tag}
                 href="#0"
-                className="group/card relative h-full overflow-hidden rounded-2xl bg-gray-800 p-px before:pointer-events-none before:absolute before:-left-40 before:-top-40 before:z-10 before:h-80 before:w-80 before:translate-x-[var(--mouse-x)] before:translate-y-[var(--mouse-y)] before:rounded-full before:bg-indigo-500/80 before:opacity-0 before:blur-3xl before:transition-opacity before:duration-500 after:pointer-events-none after:absolute after:-left-48 after:-top-48 after:z-30 after:h-64 after:w-64 after:translate-x-[var(--mouse-x)] after:translate-y-[var(--mouse-y)] after:rounded-full after:bg-indigo-500 after:opacity-0 after:blur-3xl after:transition-opacity after:duration-500 hover:after:opacity-20 group-hover:before:opacity-100"
+                className="group/card relative h-full overflow-hidden rounded-2xl bg-gray-800 p-px before:pointer-events-none before:absolute before:-left-40 before:-top-40 before:z-10 before:h-80 before:w-80 before:translate-x-[var(--mouse-x)] before:translate-y-[var(--mouse-y)] before:rounded-full before:bg-brand-500/80 before:opacity-0 before:blur-3xl before:transition-opacity before:duration-500 after:pointer-events-none after:absolute after:-left-48 after:-top-48 after:z-30 after:h-64 after:w-64 after:translate-x-[var(--mouse-x)] after:translate-y-[var(--mouse-y)] after:rounded-full after:bg-brand-500 after:opacity-0 after:blur-3xl after:transition-opacity after:duration-500 hover:after:opacity-20 group-hover:before:opacity-100"
               >
                 <div className="relative z-20 h-full overflow-hidden rounded-[inherit] bg-gray-950 after:absolute after:inset-0 after:bg-linear-to-br after:from-gray-900/50 after:via-gray-800/25 after:to-gray-900/50">
                   <div
@@ -455,7 +493,7 @@ function Workflows() {
                   <div className="p-6">
                     <div className="mb-3">
                       <span className="btn-sm relative rounded-full bg-gray-800/40 px-2.5 py-0.5 text-xs font-normal gradient-border gradient-border-pill hover:bg-gray-800/60">
-                        <span className="bg-linear-to-r from-indigo-500 to-indigo-200 bg-clip-text text-transparent">
+                        <span className="bg-linear-to-r from-brand-500 to-brand-200 bg-clip-text text-transparent">
                           {w.tag}
                         </span>
                       </span>
@@ -493,7 +531,7 @@ function Features() {
           <div className="mx-auto grid max-w-sm gap-12 sm:max-w-none sm:grid-cols-2 md:gap-x-14 md:gap-y-16 lg:grid-cols-3">
             {features.map((f) => (
               <article key={f.title}>
-                <svg className="mb-3 fill-indigo-500" xmlns="http://www.w3.org/2000/svg" width={24} height={24}>
+                <svg className="mb-3 fill-brand-500" xmlns="http://www.w3.org/2000/svg" width={24} height={24}>
                   {f.icon}
                 </svg>
                 <h3 className="mb-1 font-nacelle text-[1rem] font-semibold text-gray-200">{f.title}</h3>
@@ -531,14 +569,14 @@ function Testimonials() {
                   key={c.id}
                   aria-pressed={active}
                   onClick={() => setCategory(c.id)}
-                  className={`flex h-8 flex-1 items-center gap-2.5 whitespace-nowrap rounded-full px-3 text-sm font-medium transition-colors focus-visible:outline-hidden focus-visible:ring-3 focus-visible:ring-indigo-200 ${
+                  className={`flex h-8 flex-1 items-center gap-2.5 whitespace-nowrap rounded-full px-3 text-sm font-medium transition-colors focus-visible:outline-hidden focus-visible:ring-3 focus-visible:ring-brand-200 ${
                     active
-                      ? "relative bg-linear-to-b from-gray-900 via-gray-800/60 to-gray-900 gradient-border gradient-border-indigo"
+                      ? "relative bg-linear-to-b from-gray-900 via-gray-800/60 to-gray-900 gradient-border gradient-border-brand"
                       : "opacity-65 transition-opacity hover:opacity-90"
                   }`}
                 >
                   <svg
-                    className={`fill-current ${active ? "text-indigo-500" : "text-gray-600"}`}
+                    className={`fill-current ${active ? "text-brand-500" : "text-gray-600"}`}
                     xmlns="http://www.w3.org/2000/svg"
                     width={16}
                     height={16}
@@ -575,7 +613,7 @@ function Testimonials() {
                   <div className="text-sm font-medium text-gray-200">
                     <span>{t.name}</span>
                     <span className="text-gray-700"> - </span>
-                    <a className={`${MUTED} transition-colors hover:text-indigo-500`} href="#0">
+                    <a className={`${MUTED} transition-colors hover:text-brand-500`} href="#0">
                       {t.company}
                     </a>
                   </div>
@@ -657,7 +695,7 @@ function AuthForm({ view, go }: { view: Exclude<View, "home">; go: (v: View) => 
           {cfg.footer && (
             <div className={`mt-6 text-center text-sm ${MUTED}`}>
               {cfg.footer.text}{" "}
-              <button className="font-medium text-indigo-500" onClick={() => go(cfg.footer!.to)}>
+              <button className="font-medium text-brand-500" onClick={() => go(cfg.footer!.to)}>
                 {cfg.footer.link}
               </button>
             </div>
@@ -710,4 +748,3 @@ export default function Page() {
     </div>
   );
 }
-
