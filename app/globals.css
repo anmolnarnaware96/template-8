@@ -17,6 +17,13 @@
   --color-brand-900: #195f59;
   --color-brand-950: #09403d;
 
+  /* Turquoise-tinted dark grays: every bg-gray-* / border-gray-* surface now follows the turquoise theme */
+  --color-gray-950: #04312e;
+  --color-gray-900: #07403c;
+  --color-gray-800: #0c524d;
+  --color-gray-700: #166861;
+  --color-gray-600: #3a9a91;
+
   --font-inter: var(--font-inter), sans-serif;
   --font-nacelle: var(--font-nacelle), sans-serif;
 
