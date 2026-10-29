@@ -25,7 +25,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body
-        className={`${inter.variable} ${nacelle.variable} bg-linear-to-b from-gray-950 via-brand-950 to-gray-950 bg-fixed font-inter text-base text-gray-200 antialiased`}
+        className={`${inter.variable} ${nacelle.variable} bg-linear-to-b from-white via-brand-50 to-sky-50 bg-fixed font-inter text-base text-gray-200 antialiased`}
       >
         {children}
       </body>
