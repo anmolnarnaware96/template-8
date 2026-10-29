@@ -4,6 +4,19 @@
 }
 
 @theme {
+  /* Turquoise brand palette, centred on #40E0D0 (500) */
+  --color-brand-50: #effefb;
+  --color-brand-100: #c9fcf5;
+  --color-brand-200: #aef6ee;
+  --color-brand-300: #7aeee2;
+  --color-brand-400: #5ae8da;
+  --color-brand-500: #40e0d0;
+  --color-brand-600: #20bfb0;
+  --color-brand-700: #1a9a8f;
+  --color-brand-800: #19786f;
+  --color-brand-900: #195f59;
+  --color-brand-950: #09403d;
+
   --font-inter: var(--font-inter), sans-serif;
   --font-nacelle: var(--font-nacelle), sans-serif;
 
@@ -78,8 +91,8 @@
 .gradient-border-pill {
   --gb: linear-gradient(to bottom, color-mix(in oklab, var(--color-gray-700) 15%, transparent), color-mix(in oklab, var(--color-gray-700) 50%, transparent));
 }
-.gradient-border-indigo {
-  --gb: linear-gradient(to bottom, color-mix(in oklab, var(--color-indigo-500) 0%, transparent), color-mix(in oklab, var(--color-indigo-500) 50%, transparent));
+.gradient-border-brand {
+  --gb: linear-gradient(to bottom, color-mix(in oklab, var(--color-brand-500) 0%, transparent), color-mix(in oklab, var(--color-brand-500) 50%, transparent));
 }
 .gradient-border::before {
   content: "";
