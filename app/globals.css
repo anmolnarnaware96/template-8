@@ -1,0 +1,67 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/forms" {
+  strategy: base;
+}
+
+@theme {
+  --font-inter: var(--font-inter), sans-serif;
+  --font-nacelle: var(--font-nacelle), sans-serif;
+
+  --text-xs: 0.8125rem;
+  --text-xs--line-height: 1.5384;
+  --text-sm: 0.875rem;
+  --text-sm--line-height: 1.5715;
+  --text-base: 0.9375rem;
+  --text-base--line-height: 1.5333;
+  --text-base--letter-spacing: -0.0125em;
+  --text-lg: 1.125rem;
+  --text-lg--line-height: 1.5;
+  --text-lg--letter-spacing: -0.0125em;
+  --text-xl: 1.25rem;
+  --text-xl--line-height: 1.5;
+  --text-xl--letter-spacing: -0.0125em;
+  --text-2xl: 1.5rem;
+  --text-2xl--line-height: 1.415;
+  --text-2xl--letter-spacing: -0.0268em;
+  --text-3xl: 1.75rem;
+  --text-3xl--line-height: 1.3571;
+  --text-3xl--letter-spacing: -0.0268em;
+  --text-4xl: 2.5rem;
+  --text-4xl--line-height: 1.1;
+  --text-4xl--letter-spacing: -0.0268em;
+  --text-5xl: 3.5rem;
+  --text-5xl--line-height: 1;
+  --text-5xl--letter-spacing: -0.0268em;
+
+  @keyframes gradient {
+    to {
+      background-position: 200% center;
+    }
+  }
+}
+
+/* Tailwind v4 defaults borders to currentColor; keep the v3 look */
+@layer base {
+  *, ::after, ::before, ::backdrop, ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+}
+
+@layer components {
+  .btn, .btn-sm {
+    @apply inline-flex items-center justify-center whitespace-nowrap rounded-lg text-sm font-medium transition-all;
+  }
+  .btn { @apply px-4 py-[11px]; }
+  .btn-sm { @apply px-3 py-[7px]; }
+
+  .form-input {
+    @apply w-full rounded-lg border border-gray-700 bg-gray-900/50 px-4 py-2.5 text-sm text-gray-200 placeholder-gray-600 focus:border-gray-600 focus:ring-0 focus:ring-offset-0;
+  }
+}
+
+/* AOS "fade-up" starting offset */
+@media screen {
+  html:not(.no-js) body [data-aos="fade-up"] {
+    transform: translate3d(0, 10px, 0);
+  }
+}
