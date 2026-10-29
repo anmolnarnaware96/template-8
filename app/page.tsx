@@ -9,19 +9,19 @@ import AOS from "aos";
 /* ------------------------------------------------------------------ */
 
 const GRADIENT_TEXT =
-  "animate-[gradient_6s_linear_infinite] bg-[linear-gradient(to_right,var(--color-gray-200),var(--color-brand-200),var(--color-gray-50),var(--color-brand-300),var(--color-gray-200))] bg-[length:200%_auto] bg-clip-text font-nacelle font-semibold text-transparent";
+  "animate-[gradient_6s_linear_infinite] bg-[linear-gradient(to_right,var(--color-brand-900),var(--color-brand-600),var(--color-sky-600),var(--color-brand-700),var(--color-brand-900))] bg-[length:200%_auto] bg-clip-text font-nacelle font-semibold text-transparent";
 
 const GRADIENT_BORDER = "gradient-border";
 
 const BTN_PRIMARY =
-  "bg-linear-to-t from-brand-600 to-brand-500 bg-[length:100%_100%] bg-[bottom] text-gray-950 shadow-[inset_0px_1px_0px_0px_--theme(--color-white/.16)] hover:bg-[length:100%_150%]";
+  "bg-linear-to-t from-brand-600 to-brand-500 bg-[length:100%_100%] bg-[bottom] text-brand-950 shadow-[inset_0px_1px_0px_0px_--theme(--color-white/.4)] hover:bg-[length:100%_150%]";
 
 const BTN_SECONDARY = `relative bg-linear-to-b from-gray-800 to-gray-800/60 bg-[length:100%_100%] bg-[bottom] text-gray-300 hover:bg-[length:100%_150%] ${GRADIENT_BORDER}`;
 
 const SECTION_BORDER =
   "border-t [border-image:linear-gradient(to_right,transparent,--theme(--color-slate-400/.25),transparent)1]";
 
-const MUTED = "text-brand-200/65";
+const MUTED = "text-brand-900/75";
 
 /* ------------------------------------------------------------------ */
 /* Content                                                             */
@@ -197,8 +197,8 @@ function Decor({ src, w, h, className }: { src: string; w: number; h: number; cl
 
 function Eyebrow({ children }: { children: React.ReactNode }) {
   return (
-    <div className="inline-flex items-center gap-3 pb-3 before:h-px before:w-8 before:bg-linear-to-r before:from-transparent before:to-brand-200/50 after:h-px after:w-8 after:bg-linear-to-l after:from-transparent after:to-brand-200/50">
-      <span className="inline-flex bg-linear-to-r from-brand-500 to-brand-200 bg-clip-text text-transparent">
+    <div className="inline-flex items-center gap-3 pb-3 before:h-px before:w-8 before:bg-linear-to-r before:from-transparent before:to-brand-500/50 after:h-px after:w-8 after:bg-linear-to-l after:from-transparent after:to-brand-500/50">
+      <span className="inline-flex bg-linear-to-r from-brand-700 to-sky-600 bg-clip-text text-transparent">
         {children}
       </span>
     </div>
@@ -212,7 +212,7 @@ function CtaButtons() {
         <a className={`btn group mb-4 w-full sm:mb-0 sm:w-auto ${BTN_PRIMARY}`} href="#0">
           <span className="relative inline-flex items-center">
             Start Building
-            <span className="ml-1 tracking-normal text-gray-950/60 transition-transform group-hover:translate-x-0.5">
+            <span className="ml-1 tracking-normal text-brand-950/60 transition-transform group-hover:translate-x-0.5">
               -&gt;
             </span>
           </span>
@@ -287,7 +287,7 @@ function Header({ go }: { go: (v: View) => void }) {
 }
 
 function Footer({ go }: { go: (v: View) => void }) {
-  const link = `${MUTED} transition hover:text-brand-500`;
+  const link = `${MUTED} transition hover:text-brand-700`;
   return (
     <footer>
       <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
@@ -319,7 +319,7 @@ function Footer({ go }: { go: (v: View) => void }) {
                 {socials.map((s) => (
                   <li key={s.label}>
                     <a
-                      className="flex items-center justify-center text-brand-500 transition hover:text-brand-400"
+                      className="flex items-center justify-center text-brand-600 transition hover:text-brand-800"
                       href="#0"
                       aria-label={s.label}
                     >
@@ -420,9 +420,9 @@ function Hero() {
                   preload="auto"
                 />
                 {/* turquoise tint so the footage matches the page */}
-                <div className="pointer-events-none absolute inset-0 bg-linear-to-br from-gray-950/50 via-brand-500/15 to-gray-950/50" />
+                <div className="pointer-events-none absolute inset-0 bg-linear-to-br from-brand-900/20 via-brand-500/10 to-sky-600/20" />
               </figure>
-              <span className="pointer-events-none absolute bottom-5 right-5 p-2.5 before:absolute before:inset-0 before:rounded-full before:bg-gray-950/80 before:backdrop-blur-xs before:duration-300 group-hover:before:scale-105">
+              <span className="pointer-events-none absolute bottom-5 right-5 p-2.5 before:absolute before:inset-0 before:rounded-full before:bg-white/85 before:backdrop-blur-xs before:duration-300 group-hover:before:scale-105">
                 <span className="relative flex items-center gap-3">
                   <svg xmlns="http://www.w3.org/2000/svg" width={20} height={20} fill="none">
                     <path
@@ -433,8 +433,8 @@ function Hero() {
                     />
                     <defs>
                       <linearGradient id="play" x1={10} x2={10} y1={0} y2={20} gradientUnits="userSpaceOnUse">
-                        <stop stopColor="#40E0D0" />
-                        <stop offset={1} stopColor="#40E0D0" stopOpacity=".72" />
+                        <stop stopColor="#1A9A8F" />
+                        <stop offset={1} stopColor="#20BFB0" />
                       </linearGradient>
                     </defs>
                   </svg>
@@ -478,7 +478,7 @@ function Workflows() {
               <a
                 key={w.tag}
                 href="#0"
-                className="group/card relative h-full overflow-hidden rounded-2xl bg-gray-800 p-px before:pointer-events-none before:absolute before:-left-40 before:-top-40 before:z-10 before:h-80 before:w-80 before:translate-x-[var(--mouse-x)] before:translate-y-[var(--mouse-y)] before:rounded-full before:bg-brand-500/80 before:opacity-0 before:blur-3xl before:transition-opacity before:duration-500 after:pointer-events-none after:absolute after:-left-48 after:-top-48 after:z-30 after:h-64 after:w-64 after:translate-x-[var(--mouse-x)] after:translate-y-[var(--mouse-y)] after:rounded-full after:bg-brand-500 after:opacity-0 after:blur-3xl after:transition-opacity after:duration-500 hover:after:opacity-20 group-hover:before:opacity-100"
+                className="group/card relative h-full overflow-hidden rounded-2xl bg-gray-800 p-px before:pointer-events-none before:absolute before:-left-40 before:-top-40 before:z-10 before:h-80 before:w-80 before:translate-x-[var(--mouse-x)] before:translate-y-[var(--mouse-y)] before:rounded-full before:bg-brand-400/60 before:opacity-0 before:blur-3xl before:transition-opacity before:duration-500 after:pointer-events-none after:absolute after:-left-48 after:-top-48 after:z-30 after:h-64 after:w-64 after:translate-x-[var(--mouse-x)] after:translate-y-[var(--mouse-y)] after:rounded-full after:bg-sky-400 after:opacity-0 after:blur-3xl after:transition-opacity after:duration-500 hover:after:opacity-20 group-hover:before:opacity-100"
               >
                 <div className="relative z-20 h-full overflow-hidden rounded-[inherit] bg-gray-950 after:absolute after:inset-0 after:bg-linear-to-br after:from-gray-900/50 after:via-gray-800/25 after:to-gray-900/50">
                   <div
@@ -486,14 +486,14 @@ function Workflows() {
                     aria-hidden="true"
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" width={9} height={8} fill="none">
-                      <path fill="#F4F4F5" d="m4.92 8-.787-.763 2.733-2.68H0V3.443h6.866L4.133.767 4.92 0 9 4 4.92 8Z" />
+                      <path fill="#0B3D3A" d="m4.92 8-.787-.763 2.733-2.68H0V3.443h6.866L4.133.767 4.92 0 9 4 4.92 8Z" />
                     </svg>
                   </div>
                   <Image className="inline-flex" src={w.img} width={350} height={288} alt={`Workflow 0${i + 1}`} />
                   <div className="p-6">
                     <div className="mb-3">
                       <span className="btn-sm relative rounded-full bg-gray-800/40 px-2.5 py-0.5 text-xs font-normal gradient-border gradient-border-pill hover:bg-gray-800/60">
-                        <span className="bg-linear-to-r from-brand-500 to-brand-200 bg-clip-text text-transparent">
+                        <span className="bg-linear-to-r from-brand-700 to-sky-600 bg-clip-text text-transparent">
                           {w.tag}
                         </span>
                       </span>
@@ -531,7 +531,7 @@ function Features() {
           <div className="mx-auto grid max-w-sm gap-12 sm:max-w-none sm:grid-cols-2 md:gap-x-14 md:gap-y-16 lg:grid-cols-3">
             {features.map((f) => (
               <article key={f.title}>
-                <svg className="mb-3 fill-brand-500" xmlns="http://www.w3.org/2000/svg" width={24} height={24}>
+                <svg className="mb-3 fill-brand-600" xmlns="http://www.w3.org/2000/svg" width={24} height={24}>
                   {f.icon}
                 </svg>
                 <h3 className="mb-1 font-nacelle text-[1rem] font-semibold text-gray-200">{f.title}</h3>
@@ -576,7 +576,7 @@ function Testimonials() {
                   }`}
                 >
                   <svg
-                    className={`fill-current ${active ? "text-brand-500" : "text-gray-600"}`}
+                    className={`fill-current ${active ? "text-brand-600" : "text-gray-600"}`}
                     xmlns="http://www.w3.org/2000/svg"
                     width={16}
                     height={16}
@@ -595,12 +595,12 @@ function Testimonials() {
           {testimonials.map((t, i) => (
             <article
               key={t.name}
-              className={`relative mb-6 break-inside-avoid rounded-2xl bg-linear-to-br from-gray-900/50 via-gray-800/25 to-gray-900/50 p-5 backdrop-blur-xs transition-opacity ${GRADIENT_BORDER} ${
+              className={`relative mb-6 break-inside-avoid rounded-2xl bg-linear-to-br from-gray-900/50 via-gray-800/25 to-gray-900/50 p-5 shadow-sm shadow-brand-900/5 backdrop-blur-xs transition-opacity ${GRADIENT_BORDER} ${
                 t.categories.includes(category) ? "" : "opacity-30"
               }`}
             >
               <div className="flex flex-col gap-4">
-                <img src={`/client-0${i + 1}.svg`} className="h-9 w-fit" alt="Client logo" />
+                <img src={`/client-0${i + 1}.svg`} className="h-9 w-fit opacity-60 brightness-0" alt="Client logo" />
                 <p className={`${MUTED} before:content-['“'] after:content-['”']`}>{t.content}</p>
                 <div className="flex items-center gap-3">
                   <Image
@@ -613,7 +613,7 @@ function Testimonials() {
                   <div className="text-sm font-medium text-gray-200">
                     <span>{t.name}</span>
                     <span className="text-gray-700"> - </span>
-                    <a className={`${MUTED} transition-colors hover:text-brand-500`} href="#0">
+                    <a className={`${MUTED} transition-colors hover:text-brand-700`} href="#0">
                       {t.company}
                     </a>
                   </div>
@@ -695,7 +695,7 @@ function AuthForm({ view, go }: { view: Exclude<View, "home">; go: (v: View) => 
           {cfg.footer && (
             <div className={`mt-6 text-center text-sm ${MUTED}`}>
               {cfg.footer.text}{" "}
-              <button className="font-medium text-brand-500" onClick={() => go(cfg.footer!.to)}>
+              <button className="font-medium text-brand-700" onClick={() => go(cfg.footer!.to)}>
                 {cfg.footer.link}
               </button>
             </div>
