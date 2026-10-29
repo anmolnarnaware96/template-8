@@ -11,8 +11,7 @@ import AOS from "aos";
 const GRADIENT_TEXT =
   "animate-[gradient_6s_linear_infinite] bg-[linear-gradient(to_right,var(--color-gray-200),var(--color-indigo-200),var(--color-gray-50),var(--color-indigo-300),var(--color-gray-200))] bg-[length:200%_auto] bg-clip-text font-nacelle font-semibold text-transparent";
 
-const GRADIENT_BORDER =
-  "before:pointer-events-none before:absolute before:inset-0 before:rounded-[inherit] before:border before:border-transparent before:[background:linear-gradient(to_right,var(--color-gray-800),var(--color-gray-700),var(--color-gray-800))_border-box] before:[mask-composite:exclude_!important] before:[mask:linear-gradient(white_0_0)_padding-box,_linear-gradient(white_0_0)]";
+const GRADIENT_BORDER = "gradient-border";
 
 const BTN_PRIMARY =
   "bg-linear-to-t from-indigo-600 to-indigo-500 bg-[length:100%_100%] bg-[bottom] text-white shadow-[inset_0px_1px_0px_0px_--theme(--color-white/.16)] hover:bg-[length:100%_150%]";
@@ -455,7 +454,7 @@ function Workflows() {
                   <Image className="inline-flex" src={w.img} width={350} height={288} alt={`Workflow 0${i + 1}`} />
                   <div className="p-6">
                     <div className="mb-3">
-                      <span className="btn-sm relative rounded-full bg-gray-800/40 px-2.5 py-0.5 text-xs font-normal before:pointer-events-none before:absolute before:inset-0 before:rounded-[inherit] before:border before:border-transparent before:[background:linear-gradient(to_bottom,--theme(--color-gray-700/.15),--theme(--color-gray-700/.5))_border-box] before:[mask-composite:exclude_!important] before:[mask:linear-gradient(white_0_0)_padding-box,_linear-gradient(white_0_0)] hover:bg-gray-800/60">
+                      <span className="btn-sm relative rounded-full bg-gray-800/40 px-2.5 py-0.5 text-xs font-normal gradient-border gradient-border-pill hover:bg-gray-800/60">
                         <span className="bg-linear-to-r from-indigo-500 to-indigo-200 bg-clip-text text-transparent">
                           {w.tag}
                         </span>
@@ -534,7 +533,7 @@ function Testimonials() {
                   onClick={() => setCategory(c.id)}
                   className={`flex h-8 flex-1 items-center gap-2.5 whitespace-nowrap rounded-full px-3 text-sm font-medium transition-colors focus-visible:outline-hidden focus-visible:ring-3 focus-visible:ring-indigo-200 ${
                     active
-                      ? "relative bg-linear-to-b from-gray-900 via-gray-800/60 to-gray-900 before:pointer-events-none before:absolute before:inset-0 before:rounded-[inherit] before:border before:border-transparent before:[background:linear-gradient(to_bottom,--theme(--color-indigo-500/0),--theme(--color-indigo-500/.5))_border-box] before:[mask-composite:exclude_!important] before:[mask:linear-gradient(white_0_0)_padding-box,_linear-gradient(white_0_0)]"
+                      ? "relative bg-linear-to-b from-gray-900 via-gray-800/60 to-gray-900 gradient-border gradient-border-indigo"
                       : "opacity-65 transition-opacity hover:opacity-90"
                   }`}
                 >
@@ -711,3 +710,4 @@ export default function Page() {
     </div>
   );
 }
+
