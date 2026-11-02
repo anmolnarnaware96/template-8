@@ -297,9 +297,9 @@ function Hero() {
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="py-12 md:py-20">
           <div className="pb-12 text-center md:pb-20">
-            <div data-aos="fade-up"><Eyebrow>ANMIS Legal Consultancy</Eyebrow></div>
+            <div data-aos="fade-up"><Eyebrow>AML</Eyebrow></div>
             <h1 className={`${GRADIENT_TEXT} pb-5 text-4xl md:text-5xl`} data-aos="fade-up">
-              Clear, reliable legal solutions for every client
+              ANMIS Legal Consultancy
             </h1>
             <div className="mx-auto max-w-3xl">
               <p className={`mb-8 text-xl ${MUTED}`} data-aos="fade-up" data-aos-delay={200}>
