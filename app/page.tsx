@@ -124,62 +124,22 @@ const socials = [
   { label: "Github", d: "M16 8.2c-4.4 0-8 3.6-8 8 0 3.5 2.3 6.5 5.5 7.6.4.1.5-.2.5-.4V22c-2.2.5-2.7-1-2.7-1-.4-.9-.9-1.2-.9-1.2-.7-.5.1-.5.1-.5.8.1 1.2.8 1.2.8.7 1.3 1.9.9 2.3.7.1-.5.3-.9.5-1.1-1.8-.2-3.6-.9-3.6-4 0-.9.3-1.6.8-2.1-.1-.2-.4-1 .1-2.1 0 0 .7-.2 2.2.8.6-.2 1.3-.3 2-.3s1.4.1 2 .3c1.5-1 2.2-.8 2.2-.8.4 1.1.2 1.9.1 2.1.5.6.8 1.3.8 2.1 0 3.1-1.9 3.7-3.7 3.9.3.4.6.9.6 1.6v2.2c0 .2.1.5.6.4 3.2-1.1 5.5-4.1 5.5-7.6-.1-4.4-3.7-8-8.1-8z" },
 ];
 
-/* Sign in / sign up / reset password: one form component, three configs. */
-type View = "home" | "signin" | "signup" | "reset";
-type Field = { id: string; label: string; type: string; placeholder: string; required?: boolean };
-
-const authViews: Record<
-  Exclude<View, "home">,
-  {
-    title: string;
-    fields: Field[];
-    submit: string;
-    google?: boolean;
-    forgot?: boolean;
-    footer?: { text: string; link: string; to: View };
-  }
-> = {
-  signin: {
-    title: "Welcome back",
-    fields: [
-      { id: "email", label: "Email", type: "email", placeholder: "Your email" },
-      { id: "password", label: "Password", type: "password", placeholder: "Your password" },
-    ],
-    submit: "Sign in",
-    google: true,
-    forgot: true,
-    footer: { text: "Don't you have an account?", link: "Sign Up", to: "signup" },
-  },
-  signup: {
-    title: "Create an account",
-    fields: [
-      { id: "name", label: "Name", type: "text", placeholder: "Your full name", required: true },
-      { id: "company", label: "Company Name", type: "text", placeholder: "Your company name", required: true },
-      { id: "email", label: "Work Email", type: "email", placeholder: "Your work email", required: true },
-      { id: "password", label: "Password", type: "password", placeholder: "Password (at least 10 characters)", required: true },
-    ],
-    submit: "Register",
-    google: true,
-    footer: { text: "Already have an account?", link: "Sign in", to: "signin" },
-  },
-  reset: {
-    title: "Reset your password",
-    fields: [{ id: "email", label: "Email", type: "email", placeholder: "Your email" }],
-    submit: "Reset Password",
-  },
-};
+/** Phone number used by every "Book a Consultation" button. Change it here, in one place. */
+const PHONE_DISPLAY = "+91 00000 00000";
+const PHONE_HREF = "tel:+910000000000";
 
 /* ------------------------------------------------------------------ */
 /* Small building blocks                                               */
 /* ------------------------------------------------------------------ */
 
-function Logo({ onClick }: { onClick: () => void }) {
+function Logo() {
   return (
-    <button onClick={onClick} className="inline-flex shrink-0" aria-label="Cruip">
-      <Image src="/logo.svg" alt="Cruip Logo" width={32} height={32} />
-    </button>
+    <a href="#" className="inline-flex shrink-0" aria-label="ANMIS Legal Consultancy">
+      <Image src="/logo.svg" alt="ANMIS Legal Consultancy logo" width={32} height={32} />
+    </a>
   );
 }
+
 
 function Decor({ src, w, h, className }: { src: string; w: number; h: number; className: string }) {
   return (
@@ -203,18 +163,13 @@ function CtaButtons() {
   return (
     <div className="mx-auto max-w-xs sm:flex sm:max-w-none sm:justify-center">
       <div data-aos="fade-up" data-aos-delay={400}>
-        <a className={`btn group mb-4 w-full sm:mb-0 sm:w-auto ${BTN_PRIMARY}`} href="#0">
+        <a className={`btn group w-full sm:w-auto ${BTN_PRIMARY}`} href={PHONE_HREF} aria-label={`Book a consultation: call ${PHONE_DISPLAY}`}>
           <span className="relative inline-flex items-center">
-            Start Building
+            Book a Consultation
             <span className="ml-1 tracking-normal text-brand-950/60 transition-transform group-hover:translate-x-0.5">
               -&gt;
             </span>
           </span>
-        </a>
-      </div>
-      <div data-aos="fade-up" data-aos-delay={600}>
-        <a className={`btn w-full sm:ml-4 sm:w-auto ${BTN_SECONDARY}`} href="#0">
-          Schedule Demo
         </a>
       </div>
     </div>
@@ -252,7 +207,7 @@ function Spotlight({ children, className }: { children: React.ReactNode; classNa
 /* Layout pieces                                                       */
 /* ------------------------------------------------------------------ */
 
-function Header({ go }: { go: (v: View) => void }) {
+function Header() {
   return (
     <header className="z-30 mt-2 w-full md:mt-5">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
@@ -260,18 +215,13 @@ function Header({ go }: { go: (v: View) => void }) {
           className={`relative flex h-14 items-center justify-between gap-3 rounded-2xl bg-gray-900/90 px-3 after:absolute after:inset-0 after:-z-10 after:backdrop-blur-xs ${GRADIENT_BORDER}`}
         >
           <div className="flex flex-1 items-center">
-            <Logo onClick={() => go("home")} />
+            <Logo />
           </div>
           <ul className="flex flex-1 items-center justify-end gap-3">
             <li>
-              <button onClick={() => go("signin")} className={`btn-sm py-[5px] ${BTN_SECONDARY}`}>
-                Sign In
-              </button>
-            </li>
-            <li>
-              <button onClick={() => go("signup")} className={`btn-sm py-[5px] ${BTN_PRIMARY}`}>
-                Register
-              </button>
+              <a href={PHONE_HREF} className={`btn-sm py-[5px] ${BTN_PRIMARY}`}>
+                Book a Consultation
+              </a>
             </li>
           </ul>
         </div>
@@ -280,7 +230,7 @@ function Header({ go }: { go: (v: View) => void }) {
   );
 }
 
-function Footer({ go }: { go: (v: View) => void }) {
+function Footer() {
   const link = `${MUTED} transition hover:text-brand-700`;
   return (
     <footer>
@@ -288,9 +238,9 @@ function Footer({ go }: { go: (v: View) => void }) {
         <Decor src="/footer-illustration.svg" w={1076} h={378} className="bottom-0 left-1/2 -translate-x-1/2" />
         <div className={`${SECTION_BORDER} flex flex-col items-center gap-5 py-10 text-center md:flex-row md:justify-between md:py-12 md:text-left`}>
           <div className="flex flex-col items-center gap-3 md:flex-row md:gap-4">
-            <Logo onClick={() => go("home")} />
+            <Logo />
             <p className={`text-sm ${MUTED}`}>
-              © Cruip.com
+              © ANMIS Legal Consultancy
               <span className="text-gray-700"> · </span>
               <a className={link} href="#0">Terms</a>
             </p>
@@ -359,12 +309,17 @@ function Hero() {
         <div className="py-12 md:py-20">
           <div className="pb-12 text-center md:pb-20">
             <h1 className={`${GRADIENT_TEXT} pb-5 text-4xl md:text-5xl`} data-aos="fade-up">
-              AI-driven tools for product teams
+              ANMIS Legal Consultancy
             </h1>
             <div className="mx-auto max-w-3xl">
-              <p className={`mb-8 text-xl ${MUTED}`} data-aos="fade-up" data-aos-delay={200}>
-                Our landing page template works on all devices, so you only have to set it up once, and get
-                beautiful results forever.
+              <p className={`mb-8 text-lg leading-relaxed md:text-xl ${MUTED}`} data-aos="fade-up" data-aos-delay={200}>
+                ANMIS Legal Consultancy is a professional legal advisory firm dedicated to providing comprehensive,
+                reliable, and client-centric legal solutions to individuals, businesses, and organisations. It offers
+                services across legal consultation, corporate and commercial law, contract drafting and review,
+                documentation, dispute resolution, regulatory compliance, and legal representation through qualified
+                legal professionals. With an emphasis on integrity, confidentiality, transparency, and strategic legal
+                guidance, ANMIS aims to simplify complex legal matters and empower clients to make informed decisions
+                while protecting their rights and interests.
               </p>
               <CtaButtons />
             </div>
@@ -624,105 +579,26 @@ function Cta() {
 }
 
 /* ------------------------------------------------------------------ */
-/* Sign in / sign up / reset password                                  */
-/* ------------------------------------------------------------------ */
-
-function AuthForm({ view, go }: { view: Exclude<View, "home">; go: (v: View) => void }) {
-  const cfg = authViews[view];
-  const label = `block text-sm font-medium ${MUTED}`;
-
-  return (
-    <section>
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="py-12 md:py-20">
-          <div className="pb-12 text-center">
-            <h1 className={`${GRADIENT_TEXT} text-3xl md:text-4xl`}>{cfg.title}</h1>
-          </div>
-          <form className="mx-auto max-w-[400px]" onSubmit={(e) => e.preventDefault()}>
-            <div className="space-y-5">
-              {cfg.fields.map((f) => (
-                <div key={f.id}>
-                  <div className="mb-1 flex items-center justify-between gap-3">
-                    <label className={label} htmlFor={f.id}>
-                      {f.label} {f.required && <span className="text-red-500">*</span>}
-                    </label>
-                    {cfg.forgot && f.type === "password" && (
-                      <button type="button" className="text-sm text-gray-600 hover:underline" onClick={() => go("reset")}>
-                        Forgot?
-                      </button>
-                    )}
-                  </div>
-                  <input id={f.id} type={f.type} className="form-input" placeholder={f.placeholder} required={f.required} />
-                </div>
-              ))}
-            </div>
-            <div className="mt-6 space-y-5">
-              <button className={`btn w-full ${BTN_PRIMARY}`}>{cfg.submit}</button>
-              {cfg.google && (
-                <>
-                  <div className="flex items-center gap-3 text-center text-sm italic text-gray-600 before:h-px before:flex-1 before:bg-linear-to-r before:from-transparent before:via-gray-400/25 after:h-px after:flex-1 after:bg-linear-to-r after:from-transparent after:via-gray-400/25">
-                    or
-                  </div>
-                  <button type="button" className={`btn w-full ${BTN_SECONDARY}`}>
-                    Sign In with Google
-                  </button>
-                </>
-              )}
-            </div>
-          </form>
-          {cfg.footer && (
-            <div className={`mt-6 text-center text-sm ${MUTED}`}>
-              {cfg.footer.text}{" "}
-              <button className="font-medium text-brand-700" onClick={() => go(cfg.footer!.to)}>
-                {cfg.footer.link}
-              </button>
-            </div>
-          )}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ------------------------------------------------------------------ */
 /* Page                                                                */
 /* ------------------------------------------------------------------ */
 
 export default function Page() {
-  const [view, setView] = useState<View>("home");
-
   useEffect(() => {
     AOS.init({ once: true, disable: "phone", duration: 600, easing: "ease-out-sine" });
   }, []);
 
-  // Re-scan for [data-aos] elements whenever the visible "page" changes.
-  useEffect(() => {
-    window.scrollTo(0, 0);
-    AOS.refreshHard();
-  }, [view]);
-
   return (
     <div className="flex min-h-screen flex-col overflow-hidden supports-[overflow:clip]:overflow-clip">
-      <Header go={setView} />
+      <Header />
       <main className="relative flex grow flex-col">
         <Decor src="/page-illustration.svg" w={846} h={594} className="left-1/2 top-0 -translate-x-1/4" />
-        {view === "home" ? (
-          <>
-            <Hero />
-            <Workflows />
-            <Features />
-            <Testimonials />
-            <Cta />
-          </>
-        ) : (
-          <>
-            <Decor src="/blurred-shape-gray.svg" w={760} h={668} className="left-1/2 top-[400px] -mt-20 -translate-x-full opacity-50" />
-            <Decor src="/blurred-shape.svg" w={760} h={668} className="left-1/2 top-[440px] -translate-x-1/3" />
-            <AuthForm view={view} go={setView} />
-          </>
-        )}
+        <Hero />
+        <Workflows />
+        <Features />
+        <Testimonials />
+        <Cta />
       </main>
-      {view === "home" && <Footer go={setView} />}
+      <Footer />
     </div>
   );
 }
