@@ -17,8 +17,8 @@ const nacelle = localFont({
 });
 
 export const metadata = {
-  title: "Open PRO",
-  description: "Landing page template",
+  title: "ANMIS Legal Consultancy",
+  description: "Professional legal advisory: consultation, corporate and commercial law, contracts, dispute resolution, compliance and representation.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -32,4 +32,3 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     </html>
   );
 }
-
